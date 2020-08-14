@@ -47,8 +47,85 @@ The percentage should have 2 decimal digits
 # Part A
 # Assumption
 # - We are checking for the numbers called call[1], not the numbers that are being called from call[0].
+# - call[0] should always be a bangalore area code
 # - Area code numbers are what we are interested in here.
-# - Mobile numbers do not have an area code.
+# - Mobile numbers do have an area code called a prefix.
 
-def gatherAllNumbersWithAreaCode(calls: list) -> set:
-  is
+# Runtime : O(1)
+def isLandline(number: str) -> bool:
+  if number[0] == '(':
+    return True
+
+# Runtime : O(n) -- n is the length of the str input here.
+def getLandlineAreaCode(number: str) -> str:
+  number = number [1:]
+  areaCode = ''
+  while number[0] != ')':
+    areaCode += number[0]
+    number = number[1:]
+  return areaCode
+
+# Runtime : O(1)
+def isBangaloreAreaCode(number: str) -> bool:
+  if number[0:5] == '(080)':
+    return True
+
+# Runtime : O(1)
+def isTelemarketer(number: str) -> bool:
+  if number[0] == '1' and number[1] == '4' and number[2] == '0':
+    return True
+
+# Runtime : O(1)
+def getTelemarketerAreaCode() -> str:
+  return '140'
+
+# Runtime : O(1)
+def isMobileNumber(number: str) -> bool:
+  if ' ' in number:
+    return True
+  return False
+
+# Runtime : O(1)
+def getMobileNumberAreaCode(number: str) -> str:
+  return number.split(' ')[0]
+
+# Runtime : O(n)
+def getAreaCodes(calls: list) -> set:
+  areaCodes = set()
+  for call in calls:
+    dialer = call[0]
+    number = call[1]
+    # If the number is not a bangalore area code, restart the loop with the next number
+    if not isBangaloreAreaCode(dialer):
+      continue
+    # Determine what number was used and carry on
+    if isLandline(number):
+      areaCodes.add(getLandlineAreaCode(number))
+      continue
+    if isMobileNumber(number):
+      areaCodes.add(getMobileNumberAreaCode(number))
+      continue
+    if isTelemarketer(number):
+      areaCodes.add(getTelemarketerAreaCode())
+      continue
+  sortedAreaCodes = sorted(areaCodes)
+  return sortedAreaCodes
+
+calledCodes = getAreaCodes(calls)
+print("The numbers called by people in Bangalore have codes:{0}".format(calledCodes))
+
+## Part B
+
+
+def calculateB2BCalls(calls: list) -> float:
+  totalB2B = 0
+  totalCalls = len(calls)
+  for call in calls:
+    dialer = call[0]
+    number = call[1]
+    if isBangaloreAreaCode(dialer) and isBangaloreAreaCode(number):
+      totalB2B += 1
+      continue
+  return round(100*totalB2B/totalCalls, 2)
+
+print("{0} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(calculateB2BCalls(calls)))
