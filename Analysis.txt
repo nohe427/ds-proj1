@@ -1,0 +1,25 @@
+Task0
+The runtime of my solution is O(1). The solution does not depend on the input
+values and can be expected to run in constant time as I am using the python index
+operator to navigate to directly the index I want.
+
+Task1
+The runtime of my solution is O(n).  The solution iterates through every single input
+in the call log to return the number of unique numbers in the records.
+
+Task2
+The runtime of the solution is O(n).  The solution iterates through every call and makes
+calls to helper functions that have a constant runtime. There is no nested for loops.
+
+Task3 - Part A
+The runtime of the solution is O(n^2). The solution iterates over all the calls and then
+a helper function that is called iterates over the potential full length of the number. All
+other helper functions run in constant time.
+
+Task3 - Part B
+The runtime of then solution is O(n). The solution iterates over all the calls and the only
+helper functions invoked are a constant runtime.
+
+Task4
+The runtime of the solution is O(n). While the solution could have been written as O(3n) for the
+three 'for' loops called, we drop constants.
