@@ -17,9 +17,9 @@ a helper function that is called iterates over the potential full length of the 
 other helper functions run in constant time.
 
 Task3 - Part B
-The runtime of then solution is O(n). The solution iterates over all the calls and the only
-helper functions invoked are a constant runtime.
+The runtime of then solution is O(n log(n)). The solution iterates over all the calls and the only
+helper functions invoked are a constant runtime. The sorting algorithm is also included in the runtime.
 
 Task4
-The runtime of the solution is O(n). While the solution could have been written as O(3n) for the
-three 'for' loops called, we drop constants.
+The runtime of the solution is O(n log(n)). While the solution could have been written as O(3n) for the
+three 'for' loops called, we drop constants. The sorting algorithm is also included in the runtime.

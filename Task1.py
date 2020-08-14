@@ -25,6 +25,9 @@ def uniqueNumberCount(calls: list) -> int:
     for call in calls:
         uniqueNumbers.add(call[0])
         uniqueNumbers.add(call[1])
+    for text in texts:
+        uniqueNumbers.add(text[0])
+        uniqueNumbers.add(text[1])
     return len(uniqueNumbers)
 
 print("There are {0} different telephone numbers in the records.".format(uniqueNumberCount(calls)))

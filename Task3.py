@@ -87,7 +87,7 @@ def isMobileNumber(number: str) -> bool:
 
 # Runtime : O(1)
 def getMobileNumberAreaCode(number: str) -> str:
-  return number.split(' ')[0]
+  return number.split(' ')[0][:4]
 
 # Runtime : O(n)
 def getAreaCodes(calls: list) -> set:
@@ -112,20 +112,22 @@ def getAreaCodes(calls: list) -> set:
   return sortedAreaCodes
 
 calledCodes = getAreaCodes(calls)
-print("The numbers called by people in Bangalore have codes:{0}".format(calledCodes))
+print("The numbers called by people in Bangalore have codes:\n{0}".format('\n'.join(calledCodes)))
 
 ## Part B
 
 # Runtime : O(n)
 def calculateB2BCalls(calls: list) -> float:
   totalB2B = 0
-  totalCalls = len(calls)
+  totalCallsInB = 0 
   for call in calls:
     dialer = call[0]
     number = call[1]
-    if isBangaloreAreaCode(dialer) and isBangaloreAreaCode(number):
-      totalB2B += 1
+    if isBangaloreAreaCode(dialer):
+      totalCallsInB += 1
+      if isBangaloreAreaCode(number):
+        totalB2B += 1
       continue
-  return round(100*totalB2B/totalCalls, 2)
+  return round(100*(totalB2B/totalCallsInB), 2)
 
 print("{0} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(calculateB2BCalls(calls)))

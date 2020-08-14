@@ -46,4 +46,4 @@ def identifyTelemarketers(calls: list, texts: list) -> set:
     sortedTelemarkteres = sorted(outgoingCallsOnly)
     return sortedTelemarkteres
 
-print("These numbers could be telemarketers:\n{0}".format(identifyTelemarketers(calls, texts)))
+print("These numbers could be telemarketers:\n{0}".format('\n'.join(identifyTelemarketers(calls, texts))))
