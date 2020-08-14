@@ -25,3 +25,25 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
+# Runtime : O(n)
+#  Authors note : I realize this could be also written as O(3n), 
+#  but in the efficiency lectures, it mentions dropping the constants
+def identifyTelemarketers(calls: list, texts: list) -> set:
+    outgoingCallsOnly = set()
+    incomingCallsOnly = set()
+    for call in calls:
+        dialer = call[0]
+        number = call[1]
+        outgoingCallsOnly.add(dialer)
+        incomingCallsOnly.add(number)
+    for text in texts:
+        dialer = text[0]
+        number = text[1]
+        outgoingCallsOnly.discard(dialer)
+        outgoingCallsOnly.discard(number)
+    for incomingCall in incomingCallsOnly:
+        outgoingCallsOnly.discard(incomingCall)
+    sortedTelemarkteres = sorted(outgoingCallsOnly)
+    return sortedTelemarkteres
+
+print("These numbers could be telemarketers:\n{0}".format(identifyTelemarketers(calls, texts)))

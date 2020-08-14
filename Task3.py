@@ -116,7 +116,7 @@ print("The numbers called by people in Bangalore have codes:{0}".format(calledCo
 
 ## Part B
 
-
+# Runtime : O(n)
 def calculateB2BCalls(calls: list) -> float:
   totalB2B = 0
   totalCalls = len(calls)
