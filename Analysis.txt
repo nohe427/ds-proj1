@@ -12,9 +12,9 @@ The runtime of the solution is O(n).  The solution iterates through every call a
 calls to helper functions that have a constant runtime. There is no nested for loops.
 
 Task3 - Part A
-The runtime of the solution is O(n^2). The solution iterates over all the calls and then
-a helper function that is called iterates over the potential full length of the number. All
-other helper functions run in constant time.
+The runtime of the solution is O(n log(n)). The solution iterates over all the calls and then
+a helper function is called that has a runtime of log(n). Combining these functions provides
+a runtime of O(n log(n)).
 
 Task3 - Part B
 The runtime of then solution is O(n log(n)). The solution iterates over all the calls and the only

@@ -56,7 +56,7 @@ def isLandline(number: str) -> bool:
   if number[0] == '(':
     return True
 
-# Runtime : O(n) -- n is the length of the str input here.
+# Runtime : O(1)
 def getLandlineAreaCode(number: str) -> str:
   number = number [1:]
   areaCode = ''
@@ -89,7 +89,7 @@ def isMobileNumber(number: str) -> bool:
 def getMobileNumberAreaCode(number: str) -> str:
   return number.split(' ')[0][:4]
 
-# Runtime : O(n)
+# Runtime : O(n log(n))
 def getAreaCodes(calls: list) -> set:
   areaCodes = set()
   for call in calls:
